@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "dotenvx run -- index.js",
+    "dev": "dotenvx run -- nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -13,7 +15,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/manika123308/wander-wise-api/issues"
   },
@@ -21,6 +22,7 @@
   "dependencies": {
     "@dotenvx/dotenvx": "^1.65.0",
     "express": "^5.2.1",
+    "express-validator": "^7.3.2",
     "mongoose": "^9.6.1"
   },
   "devDependencies": {
