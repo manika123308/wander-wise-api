@@ -6,4 +6,20 @@ Content-Type: application/json
 {
     "name": "T Shirt"
 }
+### Get all baggages
+GET {{baseUrl}}/baggages
 
+### Get a specific baggage
+GET {{baseUrl}}/baggages/{{baggageId}}
+
+### update a specific baggage
+PATCH {{baseUrl}}/baggages/{{baggageId}}
+Content-Type: application/json
+
+{
+    "name": "T Shirt",
+    "completed": true
+}
+
+### Delete a specific baggage
+DELETE  {{baseUrl}}/baggages/{{baggageId}}

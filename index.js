@@ -2,7 +2,7 @@
 import express from "express";
 import connectDB from './config/database.js';
 import HANDLERS from './handlers.js/index.js';
-import errorMiddleware from './middlewres/error.js';
+import errorMiddleware from './middlewares/error.js';
 
 const app = express();
 
