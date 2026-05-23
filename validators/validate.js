@@ -1,5 +1,5 @@
 import { validationResult } from "express-validator";
-import { validatorError } from "..errors/validation.js";
+import { ValidationError } from "../errors/validation.js";
 
 /** 
  * Validate the request body using express-validator

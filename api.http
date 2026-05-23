@@ -1,11 +1,15 @@
-@baseUrl = http://localhost:5000
+@baseUrl = http://localhost:3000
+@baggageId=69fda8214a5f6f66e7b79db5
+@userId=6a0ecbfbe4e985cc8c7ea664
 
-### Create baggage Data
+### Create Baggage Data
 POST {{baseUrl}}/baggages
 Content-Type: application/json
+
 {
-    "name": "T Shirt"
+    "name": ""
 }
+
 ### Get all baggages
 GET {{baseUrl}}/baggages
 
@@ -23,3 +27,28 @@ Content-Type: application/json
 
 ### Delete a specific baggage
 DELETE  {{baseUrl}}/baggages/{{baggageId}}
+
+### create a user
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+    "name": "Test User",
+    "email": "user@test4.com",
+    "password": "abcdefgh"
+}
+
+### Get all users
+GET {{baseUrl}}/users
+### Get specific user
+GET {{baseUrl}}/users/{{userId}}
+### update a user
+PATCH {{baseUrl}}/users/{{userId}}
+Content-Type: application/json
+
+{
+    "email": "user@test2.com"
+}
+
+### Delete specific user
+DELETE {{baseUrl}}/users/{{userId}}

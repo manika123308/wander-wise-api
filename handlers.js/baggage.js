@@ -1,18 +1,18 @@
 import { Router } from "express";
-import { create, destroy, getAll, getOne, update } from "../../../services/baggage.js";
-import{ createOrUpdateBaggageValidator } from "../validators/baggage.js";
+import { create, destroy, getAll, getOne, update } from "../services/baggage.js";
+import { createOrUpdateBaggageValidator } from "../validators/baggage.js";
 
 const BAGGAGE_ROUTER = Router();
 
-BAGGAGE_ROUTER.post("/", createOrUpdateBaggageValidator, async (req,resizeBy,next) => {
+BAGGAGE_ROUTER.post("/", createOrUpdateBaggageValidator, async (req, res, next) => {
     try {
-    const baggage = await create (req.body);
-
-    res.status(201).json({ data: baggage});
-    }catch(error){
+        const baggage = await create(req.body); // create({ name: "jacket" })
+        res.status(201).json({ data: baggage });
+    } catch (error) {
         next(error);
     }
 });
+
 BAGGAGE_ROUTER.get("/", async (req, res, next) => {
     try {
         const baggages = await getAll();

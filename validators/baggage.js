@@ -1,6 +1,7 @@
 import { body } from "express-validator";
+import { validate } from "./validate.js";
 
-export const createBaggageValidator =  [
+export const createOrUpdateBaggageValidator =  [
 body("name")
      .notEmpty()
       .withMessage("Name should not be empty")
