@@ -47,8 +47,26 @@ PATCH {{baseUrl}}/users/{{userId}}
 Content-Type: application/json
 
 {
-    "email": "user@test2.com"
+    "email": "user@test6.com"
 }
 
 ### Delete specific user
 DELETE {{baseUrl}}/users/{{userId}}
+### register a user
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+    "name": "Test User",
+    "email": "user@test.com",
+    "password": "abcdefgh"
+}
+
+### login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+    "email": "user@test.com",
+    "password": "abcdefgh"
+}
