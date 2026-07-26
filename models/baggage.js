@@ -15,8 +15,13 @@ const BaggageSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "User",
       required: true,
-    }
   },
+  trip: {
+    type: Schema.Types.ObjectId,
+    ref: "Trip",
+    required: true,
+  }
+},
   {
     timestamps: true,
   }

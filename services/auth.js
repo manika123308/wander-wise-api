@@ -11,7 +11,7 @@ export const register = async (data) => {
 export const login = async (data) => {
     const user = await getUserByEmail(data.email);
     if (!await compare(data.password, user.password)) {
-        throw new UnauthorizedError();
+        throw new UnauthorizedError("Invalid credentials");
     }
     return generateAccessToken({ userId: user._id });
 }

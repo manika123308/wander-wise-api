@@ -1,24 +1,31 @@
 @baseUrl = http://localhost:3000
-@baggageId=69fda8214a5f6f66e7b79db5
-@userId=6a0ecbfbe4e985cc8c7ea664
+@baggageId=6a0e9ae28e1eaa56a959a429
+@userId=6a0ec069dc2c8cd317129604
+@tripId=6a21a148e1591292225fe4cf
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTBlYzA2OWRjMmM4Y2QzMTcxMjk2MDQiLCJpYXQiOjE3ODA1NjE0NDYsImV4cCI6MTc4MTE2NjI0Nn0.-FiFKsfhiogdpTH4NQZIOiRAqHkC6FV7xnZH0l83HBc
+@invitationToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0cmlwSWQiOiI2YTIxYTE0OGUxNTkxMjkyMjI1ZmU0Y2YiLCJpYXQiOjE3ODA2MzUyOTksImV4cCI6MTc4MDYzODg5OX0.lJyBmqlcGXZQzz9NzfgtHxdW3ceA8cQ0jdv_3Fyh_ds
 
-### Create Baggage Data
+### Create baggage Data
 POST {{baseUrl}}/baggages
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
-    "name": ""
+    "name": "socks"
 }
 
 ### Get all baggages
 GET {{baseUrl}}/baggages
+Authorization: Bearer {{token}}
 
 ### Get a specific baggage
 GET {{baseUrl}}/baggages/{{baggageId}}
+Authorization: Bearer {{token}}
 
 ### update a specific baggage
 PATCH {{baseUrl}}/baggages/{{baggageId}}
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
     "name": "T Shirt",
@@ -27,31 +34,40 @@ Content-Type: application/json
 
 ### Delete a specific baggage
 DELETE  {{baseUrl}}/baggages/{{baggageId}}
+Authorization: Bearer {{token}}
 
 ### create a user
 POST {{baseUrl}}/users
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
     "name": "Test User",
-    "email": "user@test4.com",
+    "email": "testing@gmail.com",
     "password": "abcdefgh"
 }
 
 ### Get all users
 GET {{baseUrl}}/users
+Authorization: Bearer {{token}}
+
 ### Get specific user
 GET {{baseUrl}}/users/{{userId}}
+Authorization: Bearer {{token}}
+
 ### update a user
 PATCH {{baseUrl}}/users/{{userId}}
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
-    "email": "user@test6.com"
+    "email": "user@update2.com"
 }
 
 ### Delete specific user
 DELETE {{baseUrl}}/users/{{userId}}
+Authorization: Bearer {{token}}
+
 ### register a user
 POST {{baseUrl}}/auth/register
 Content-Type: application/json
@@ -70,3 +86,62 @@ Content-Type: application/json
     "email": "user@test.com",
     "password": "abcdefgh"
 }
+### create a new trip
+POST {{baseUrl}}/trips
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "Trip to the moon",
+  "startDate": "2025-12-15",
+  "endDate": "2025-12-16",
+  "budget": {
+    "total": 1000
+  },
+  "destinations": ["Moon", "Mars", "Jupiter"]
+}
+
+### Get all trips
+GET {{baseUrl}}/trips
+Authorization: Bearer {{token}}
+
+### Get a trip by id
+GET {{baseUrl}}/trips/{{tripId}}
+Authorization: Bearer {{token}}  
+
+### Update trip
+PATCH {{baseUrl}}/trips/{{tripId}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "expenses": [
+    {
+        "name": "taxi",
+        "amount": 600,
+    }
+  ],
+}
+
+### Accept invite
+GET {{baseUrl}}/trips/{{tripId}}/invite/accept?token={{invitationToken}}
+Authorization: Bearer {{token}}
+
+### Delete a trip
+DELETE {{baseUrl}}/trips/{{tripId}}
+Authorization: Bearer {{token}}
+
+### send trip invitation
+POST {{baseUrl}}/trips/{{tripId}}/invite
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "collaboratorEmails": [
+        "manikabaskota65@gmail.com"
+    ]
+}
+
+### Accept invite
+GET {{baseUrl}}/trips/{{tripId}}/invite/accept?token={{invitationToken}}
+Authorization: Bearer {{token}}
